@@ -25,8 +25,11 @@ Route::get('/book/create', [BookController::class, 'create']);
 Route::post('/book/store', [BookController::class, 'store'])->name('book.store');
 
 Route::get('/author', [AuthorController::class, 'index'])->name('author.index') ;
-Route::get('/author/create', [AuthorController::class, 'create']);
+Route::get('/author/create', [AuthorController::class, 'create'])->name('author.create') ;;
 Route::post('/author/store', [AuthorController::class, 'store'])->name('author.store');
+Route::get('/{id}/edit', [AuthorController::class, 'edit'])->name('author.edit');
+Route::post('/{id}/update', [AuthorController::class, 'update'])->name('author.update');
+Route::get('/{id}/delete', [AuthorController::class, 'delete'])->name('author.delete');
 
 Route::get('/category', [CategoryController::class, 'index'])->name('category.index') ;
 Route::get('/category/create', [CategoryController::class, 'create']);

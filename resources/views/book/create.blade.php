@@ -1,43 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+@extends('layouts.app')
+
+@section('content')
     <h1>Create Book</h1>
-    <form method="post" action="{{ route('book.store') }}">
+    <form method="post" action="{{ route('book.store') }}" enctype="multipart/form-data">
         @csrf
         @method('post')
         <div>
-            <label>Book Name</label>
-            <input type="text" name="name" placeholder="name"/>
+            <label for="name">Book Name</label>
+            <input type="text" id="name" name="name" placeholder="Name"/>
         </div>
         <div>
-            <label>Price </label>
-            <input type="text" name="price" placeholder="price"/>
+            <label for="price">Price</label>
+            <input type="text" id="price" name="price" placeholder="Price"/>
         </div>
         <div>
-            <label> Stock</label>
-            <input type="text" name="stock" placeholder="stock"/>
+            <label for="stock">Stock</label>
+            <input type="text" id="stock" name="stock" placeholder="Stock"/>
         </div>
         <div>
-            <label>Cover Page</label>
-            <input type="file" name="img_path" placeholder="image"/>
+            <label for="img_path">Cover Page</label>
+            <input type="file" id="img_path" name="img_path"/>
         </div>
         <div>
-        <label for="author_id">Author:</label>
-            <select name="author_id" required>
-            @foreach($authors as $author)
-                <option value="{{ $author->id }}">{{ $author->name }}</option>
-            @endforeach
+            <label for="author_id">Author:</label>
+            <select name="author_id" id="author_id" required>
+                @foreach($authors as $author)
+                    <option value="{{ $author->id }}">{{ $author->name }}</option>
+                @endforeach
             </select>
         </div>
-
         <div>
-            <input type="submit" value="create book"/>
+            <input type="submit" value="Create Book"/>
         </div>
     </form>
-</body>
-</html>
+@endsection

@@ -1,30 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+@extends('layouts.app')
+
+@section('content')
     <h1>Create Author</h1>
-    <form method="post" action="{{ route('author.store') }}">
+    <form method="post" action="{{ route('author.store') }}" enctype="multipart/form-data">
         @csrf
         @method('post')
         <div>
-            <label>Author Name</label>
-            <input type="text" name="name" placeholder="name"/>
+            <label for="name">Author Name</label>
+            <input type="text" id="name" name="name" placeholder="Name"/>
         </div>
         <div>
-            <label>Date Of Birth </label>
-            <input type="date" name="date_of_birth" placeholder="price"/>
+            <label for="date_of_birth">Date Of Birth</label>
+            <input type="date" id="date_of_birth" name="date_of_birth"/>
         </div>
         <div>
-            <label>Author Image</label>
-            <input type="file" name="img_path" placeholder="image"/>
+            <label for="img_path">Author Image</label>
+            <input type="file" id="img_path" name="img_path"/>
         </div>
         <div>
-            <input type="submit" value="create author"/>
+            <input type="submit" value="Create Author"/>
         </div>
     </form>
-</body>
-</html>
+@endsection

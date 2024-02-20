@@ -35,3 +35,5 @@ Route::get('/category', [CategoryController::class, 'index'])->name('category.in
 Route::get('/category/create', [CategoryController::class, 'create']);
 Route::post('/author/store', [CategoryController::class, 'store'])->name('category.store');
 
+
+

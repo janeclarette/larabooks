@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Author;
-use Illuminate\Support\Facades\Redirect; // Add this line
+use Illuminate\Support\Facades\Redirect;
 
 class AuthorController extends Controller
 {
@@ -28,7 +28,15 @@ class AuthorController extends Controller
         $author = new Author();
         $author->name = trim($request->name);
         $author->date_of_birth = $request->date_of_birth;
-        $author->img_path = $request->img_path;
+        
+        // Handle file upload for the image
+        if ($request->hasFile('img_path')) {
+            $image = $request->file('img_path');
+            $imageName = $image->getClientOriginalName();
+            $image->move(public_path('images'), $imageName);
+            $author->img_path = 'images/' . $imageName;
+        }
+        
         $author->save();
         return Redirect::route('author.index');
     }
@@ -43,7 +51,15 @@ class AuthorController extends Controller
         $author = Author::find($id);
         $author->name = trim($request->name);
         $author->date_of_birth = $request->date_of_birth;
-        $author->img_path = $request->img_path;
+
+        // Handle file upload for the image
+        if ($request->hasFile('img_path')) {
+            $image = $request->file('img_path');
+            $imageName = $image->getClientOriginalName();
+            $image->move(public_path('images'), $imageName);
+            $author->img_path = 'images/' . $imageName;
+        }
+
         $author->save();
         return Redirect::route('author.index');
     }

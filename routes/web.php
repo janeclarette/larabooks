@@ -33,7 +33,7 @@ Route::get('/{id}/delete', [AuthorController::class, 'delete'])->name('author.de
 
 Route::get('/category', [CategoryController::class, 'index'])->name('category.index') ;
 Route::get('/category/create', [CategoryController::class, 'create']);
-Route::post('/author/store', [CategoryController::class, 'store'])->name('category.store');
+Route::post('/category/store', [CategoryController::class, 'store'])->name('category.store');
 
 
 

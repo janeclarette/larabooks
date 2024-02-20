@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.base')
 
-@section('content')
+@section('body')
     <h1>Create Author</h1>
     <form method="post" action="{{ route('author.store') }}" enctype="multipart/form-data">
         @csrf

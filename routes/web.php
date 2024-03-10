@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SupplierController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,6 +36,4 @@ Route::get('/category', [CategoryController::class, 'index'])->name('category.in
 Route::get('/category/create', [CategoryController::class, 'create']);
 Route::post('/category/store', [CategoryController::class, 'store'])->name('category.store');
 
-
-
- 
+Route::get('/supplier', [SupplierController::class, 'index'])->name('supplier.index') ;
